@@ -87,11 +87,11 @@ class MyApp extends StatelessWidget {
   
     StarlightUtils.push(MyHome());///`Navigation.pushNamed()` shortcut.
   
-    StarlightUtils.pushNamed('home');///StarlightUtils.pushNamedAndRemoveUntil('home');
+    StarlightUtils.pushNamed('home');///`Navigation.pushNamed()` shortcut.
   	
-    StarlightUtils.pushNamedAndRemoveUntil('home');///StarlightUtils.pushAndRemoveUntil(MyHome());
+    StarlightUtils.pushNamedAndRemoveUntil('home');///`Navigation.pushNamedAndRemoveUntil()` shortcut.
     
-    StarlightUtils.pushAndRemoveUntil(MyHome());///StarlightUtils.pushReplacement(MyHome());
+    StarlightUtils.pushAndRemoveUntil(MyHome());///`Navigation.pushAndRemoveUntil()` shortcut.
     
     StarlightUtils.pushReplacement(MyHome());///`Navigation.pushReplacement()` shortcut.
     
