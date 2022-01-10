@@ -11,9 +11,9 @@ extension StarlightDouble on double {
     final List _price = [];
     final String _currency = toString().split('.').first;
     final int _dec = toString().split('.').last.length > 2
-        ? int.parse(
+        ? double.parse(
                 "${toString().split('.').last.substring(0, 2)}.${toString().split('.').last.substring(2, 3)}")
-            .ceil()
+            .floor()
         : int.parse(toString().split('.').last);
     final int _currencyLength = _currency.toString().length - 1;
     for (int i = 0; i < _currency.length; i++) {
@@ -28,6 +28,6 @@ extension StarlightDouble on double {
       _format += _price.join()[_priceLength - i];
     }
     if (_dec > 1) return "$_format.$_dec";
-    return "${_format}0";
+    return "$_format.00";
   }
 }
