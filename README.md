@@ -335,11 +335,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(DateTime.now().differenceTimeInString(DateTime(2021, 12, 12)));///4w
-    print(12850.6);///12,850.6
+    print(12850.648);///12,850.65
     print("password".isStrongPassword);///false
     print("a@".isEmail);///false
     print("a b c".withoutWhiteSpace);///abc
-    print("Hello World".toValidate);
+    print("Hello World".toValidate);///helloworld
     
     return Container();
   }

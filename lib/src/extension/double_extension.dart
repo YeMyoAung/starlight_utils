@@ -4,13 +4,17 @@ part of starlight_utils;
 extension StarlightDouble on double {
   ///Currency Format
   ///eg.
-  ///- `300000.0` will be Change `300,000`
-  ///- `300000.2` will be Change `300,000.2`
+  ///- `300000.00` will be Change `300,000`
+  ///- `300000.25` will be Change `300,000.246`
   String get currencyFormat {
     String _format = '';
     final List _price = [];
     final String _currency = toString().split('.').first;
-    final int _dec = int.parse(toString().split('.').last);
+    final int _dec = toString().split('.').last.length > 2
+        ? int.parse(
+                "${toString().split('.').last.substring(0, 2)}.${toString().split('.').last.substring(2, 3)}")
+            .ceil()
+        : int.parse(toString().split('.').last);
     final int _currencyLength = _currency.toString().length - 1;
     for (int i = 0; i < _currency.length; i++) {
       if (i != 0 && i % 3 == 0) {
@@ -24,6 +28,6 @@ extension StarlightDouble on double {
       _format += _price.join()[_priceLength - i];
     }
     if (_dec > 1) return "$_format.$_dec";
-    return _format;
+    return "${_format}0";
   }
 }
