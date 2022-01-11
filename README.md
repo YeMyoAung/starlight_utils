@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   
-    StarlightUtils.push(MyHome());///`Navigation.pushNamed()` shortcut.
+    StarlightUtils.push(MyHome());///`Navigation.push()` shortcut.
   
     StarlightUtils.pushNamed('home');///`Navigation.pushNamed()` shortcut.
   	
