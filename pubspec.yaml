@@ -1,6 +1,6 @@
 name: starlight_utils
 description: The easiest way to use navigation, context less and useful methods.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/YeMyoAung/starlight_utils.git
 
 environment:

@@ -72,10 +72,12 @@ import 'package:starlight_utils/starlight_utils.dart';
 And then you can use easily.
 
 ## Note
-If you want to use context less navigation service
-you need to set navigation key.
 If you want to use context less dialog,bottomsheet,...
 you need to inovke StarlightUtils
+If you want to use context less navigation service
+you need to set navigation key.
+If you used a context(like this(StarlightUtils.of(context))),
+you need to invoke like this StarlightUtils.pop(usedContext:true)
 
 ## Context Less Navigation
 ```dart
@@ -95,11 +97,15 @@ class MyApp extends StatelessWidget {
     
     StarlightUtils.pushReplacement(MyHome());///`Navigation.pushReplacement()` shortcut.
     
-    StarlightUtils.pushReplacement('home');///`Navigation.popAndPushNamed()` shortcut.
+    StarlightUtils.pushReplacementNamed('home');///`Navigation.pushReplacement()` shortcut.
     
-    StarlightUtils.popAndPushNamed('home');///`Navigation.pop()` shortcut.
+    StarlightUtils.popAndPushNamed('home');///`Navigation.popAndPushNamed()` shortcut.
     
-    StarlightUtils.conPop();///`Navigation.pop()` shortcut.
+    ///If you used a context(like this(StarlightUtils.of(context))),
+    ///you need to invoke like this StarlightUtils.pop(usedContext:true)
+    StarlightUtils.pop();///`Navigation.pop()` shortcut.
+
+    StarlightUtils.conPop();///`Navigation.conPop()` shortcut.
   
     return MaterialApp(
         navigatorKey: StarlightUtils.navigatorKey,///important

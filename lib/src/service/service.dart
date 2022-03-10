@@ -3,11 +3,8 @@ part of starlight_utils;
 class StarlightUtils {
   StarlightUtils._();
 
-  ///[StarlightUtils] instance
-  static StarlightUtils? _instance;
-
   ///[BuildContext] instance
-  static BuildContext? _context;
+  static final List<BuildContext> _context = [];
 
   ///To Use Context Less Service [StarlightUtils]
   ///
@@ -24,10 +21,8 @@ class StarlightUtils {
   ///   }
   /// }
   /// ```
-  factory StarlightUtils.of(BuildContext context) {
-    _context = context;
-    _instance ??= StarlightUtils._();
-    return _instance!;
+  static void of(BuildContext context) {
+    _context.add(context);
   }
 
   /**
@@ -70,7 +65,7 @@ class StarlightUtils {
   }) {
     try {
       showAboutDialog(
-        context: _context!,
+        context: _context.last,
         applicationName: applicationName,
         applicationVersion: applicationVersion,
         applicationIcon: applicationIcon,
@@ -102,7 +97,7 @@ class StarlightUtils {
   }) {
     try {
       return showDialog(
-        context: _context!,
+        context: _context.last,
         builder: (_) => widget,
         barrierDismissible: barrierDismissible,
         barrierColor: barrierColor,
@@ -123,7 +118,7 @@ class StarlightUtils {
   /// ```dart
   /// StarlightUtils.showBottomSheet(MyHome());
   /// ```
-  static PersistentBottomSheetController<T> bottomSheet<T>(
+  static Future<T?> bottomSheet<T>(
     Widget widget, {
     Color? backgroundColor,
     double? elevation,
@@ -133,8 +128,8 @@ class StarlightUtils {
     AnimationController? transitionAnimationController,
   }) {
     try {
-      return showBottomSheet(
-        context: _context!,
+      return showModalBottomSheet(
+        context: _context.last,
         builder: (_) => widget,
         backgroundColor: backgroundColor,
         elevation: elevation,
@@ -160,7 +155,7 @@ class StarlightUtils {
   static ScaffoldFeatureController<SnackBar, SnackBarClosedReason> snackbar(
       SnackBar snackBar) {
     try {
-      return ScaffoldMessenger.of(_context!).showSnackBar(snackBar);
+      return ScaffoldMessenger.of(_context.last).showSnackBar(snackBar);
     } catch (e) {
       throw _contextError;
     }
@@ -200,7 +195,7 @@ class StarlightUtils {
   }) {
     try {
       return showDatePicker(
-        context: _context!,
+        context: _context.last,
         initialDate: initialDate,
         firstDate: firstDate,
         lastDate: lastDate,
@@ -251,7 +246,7 @@ class StarlightUtils {
   }) {
     try {
       return showTimePicker(
-        context: _context!,
+        context: _context.last,
         initialTime: initialTime,
         builder: builder,
         useRootNavigator: useRootNavigator,
@@ -305,7 +300,7 @@ class StarlightUtils {
   }) {
     try {
       return showDateRangePicker(
-        context: _context!,
+        context: _context.last,
         initialDateRange: initialDateRange,
         firstDate: firstDate,
         lastDate: lastDate,
@@ -359,7 +354,7 @@ class StarlightUtils {
   }) {
     try {
       return showMenu(
-        context: _context!,
+        context: _context.last,
         position: position,
         items: items,
         initialValue: initialValue,
@@ -620,8 +615,12 @@ class StarlightUtils {
   /// ```
   static void pop<T>({
     T? result,
+    usedContext = false,
   }) {
     try {
+      if (usedContext) {
+        _context.removeLast();
+      }
       return navigatorKey.currentState!.pop(
         result,
       );

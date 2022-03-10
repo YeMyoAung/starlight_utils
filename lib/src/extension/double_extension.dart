@@ -28,6 +28,6 @@ extension StarlightDouble on double {
       _format += _price.join()[_priceLength - i];
     }
     if (_dec > 1) return "$_format.$_dec";
-    return "$_format.00";
+    return _format;
   }
 }
