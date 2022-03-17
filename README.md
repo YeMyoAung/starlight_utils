@@ -15,6 +15,7 @@ The easiest way to use navigation, context less and useful methods.
 | Currency Format | ✅ |
 | Password Validate | ✅ |
 | Email Validate | ✅ |
+| Color Generator | ✅ |
 | White Space Remove | ✅ |
 | To Validate | ✅ |
 | MediaQuery | ✅ |
@@ -346,6 +347,7 @@ class MyApp extends StatelessWidget {
     print("a@".isEmail);///false
     print("a b c".withoutWhiteSpace);///abc
     print("Hello World".toValidate);///helloworld
+    Color.generate;
     
     return Container();
   }
