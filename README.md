@@ -347,7 +347,7 @@ class MyApp extends StatelessWidget {
     print("a@".isEmail);///false
     print("a b c".withoutWhiteSpace);///abc
     print("Hello World".toValidate);///helloworld
-    Color.generate;
+    StarlightColor.generate;
     
     return Container();
   }
